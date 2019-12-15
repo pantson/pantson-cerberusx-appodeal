@@ -1,0 +1,120 @@
+Strict
+
+#ANDROID_MIN_SDK_VERSION = 21
+
+#If TARGET<>"android"
+#Error "The Appodeal module is only available on the android target"
+#End
+
+#rem
+add to C:\dev\cardv3\{build folder}\android\gradletemplate\build.gradle
+      flatDir {
+        dirs ${ANDROID_LIBRARY_LIST}
+      }
+#end
+
+#If TARGET="android"
+
+	Import "native/appodeal.android.java"
+
+'	#ANDROID_LIBRARY_LIST+= "'${CD}/native/sdk/aar'"
+#ANDROID_LIBRARY_REFERENCE_1=" "
+#ANDROID_LIBRARY_REFERENCE_2="compile 'com.appodeal.ads:sdk:2.6.0.0'~n"
+'  compile 'com.android.support:multidex:1.0.3'~n"
+'com.google.android.gms:play-services-ads:10.2.0'~ncompile 'com.google.android.gms:play-services-base:10.2.0'~ncompile fileTree(dir: '${CD}/native/sdk', include: ['*.jar'])~ncompile name: 'adcolony-sdk-3.2.1', ext: 'aar'~n compile name: 'mmedia-6.4.0', ext: 'aar'~n compile name: 'mobvista_alphab', ext: 'aar'~n compile name: 'mobvista_appwall', ext: 'aar'~n compile name: 'mobvista_appwallext', ext: 'aar'~n compile name: 'mobvista_common', ext: 'aar'~n compile name: 'mobvista_interstitial', ext: 'aar'~n compile name: 'mobvista_mvdownloads', ext: 'aar'~n compile name: 'mobvista_mvjscommon', ext: 'aar'~n compile name: 'mobvista_mvnative', ext: 'aar'~n compile name: 'mobvista_nativeex', ext: 'aar'~n compile name: 'mobvista_offerwall', ext: 'aar'~n compile name: 'mobvista_playercommon', ext: 'aar'~n compile name: 'mobvista_reward', ext: 'aar'~n compile name: 'mobvista_videocommon', ext: 'aar'~n compile name: 'mobvista_videofeeds', ext: 'aar' ~n "
+
+	#ANDROID_MANIFEST_MAIN+="
+<uses-permission android:name=~qandroid.permission.ACCESS_NETWORK_STATE~q />
+<uses-permission android:name=~qandroid.permission.INTERNET~q />
+<uses-permission android:name=~qandroid.permission.ACCESS_COARSE_LOCATION~q />
+<uses-permission android:name=~qandroid.permission.ACCESS_FINE_LOCATION~q />
+<uses-permission android:name=~qandroid.permission.WRITE_EXTERNAL_STORAGE~q />
+<uses-permission android:name=~qandroid.permission.ACCESS_WIFI_STATE~q />
+<uses-permission android:name=~qandroid.permission.VIBRATE~q />
+<uses-permission android:name=~qandroid.permission.REQUEST_INSTALL_PACKAGES~q/>"
+    
+#ANDROID_MANIFEST_APPLICATION="<uses-library
+    android:name=~qorg.apache.http.legacy~q
+    android:required=~qfalse~q />"
+
+#End 
+
+Extern
+
+Class _appodeal Extends Null="BBAppodeal"
+
+	Function GetAppodeal:AdAppodeal()
+		
+	Method initialise:Void(appKey:String,adType:Int)
+	Method show:Void(adType:Int)
+	Method isLoaded:Bool(adType:Int)
+	Method enableLogging:Void()
+	Method disableLogging:Void()
+	Method enableVerboseLogging:Void()
+	Method setTesting:Void(state:Bool)
+	Method updateGDPRconsent:Void(value:Bool)
+	Method updateCOPPA:Void(value:Bool)
+	Method ignoreCOPPA:Void()
+End
+
+Public
+Class Appodeal
+	Const INTERSTITIAL:=3
+	Const BANNER:=4
+	Const BANNERBOTTOM:=8
+	Const BANNERTOP:=16
+	Const REWARDED_VIDEO:=128
+	Const NON_SKIPPABLE_VIDEO:=128
+	Const MREC:=256
+	Const Nativ:=512
+	
+'    Const BANNER_TOP_RIGHT:=8000
+' '   Const BANNER_TOP_LEFT:=8001
+'    Const BANNER_BOTTOM_RIGHT:=8002
+'    Const BANNER_BOTTOM_LEFT:=8003
+	
+	Const ALL:=1023
+
+	Field _ad:_appodeal
+	
+	Method New()
+		_ad = New _appodeal
+	End
+	
+	Method Initialise:Void(AppKey:String,AdTypes:Int=1023)
+		_ad.initialise(AppKey,AdTypes)
+#If CONFIG="debug"
+		_ad.setTesting(True)
+		_ad.enableLogging()
+#End
+		EnableCOPPA()
+	End
+	
+	Method IsLoaded:Bool(AdType:Int)
+		Return _ad.isLoaded(AdType)
+	End
+	
+	Method Show:Void(AdType:Int)
+		_ad.show(AdType)
+	End
+	
+	Method EnableGDPRConsent:Void()
+		_ad.updateGDPRconsent(True)
+	End
+
+	Method DisableGDPRConsent:Void()
+		_ad.updateGDPRconsent(False)
+	End
+	
+	Method IgnoreCOPPA:Void()
+		_ad.ignoreCOPPA()
+	End
+	
+	Method EnableCOPPA:Void()
+		_ad.updateCOPPA(True)
+	End
+	
+	Method DisableCOPPA:Void()
+		_ad.updateCOPPA(False)
+	End
+End

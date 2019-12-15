@@ -1,0 +1,50 @@
+Strict
+
+Import mojo2
+Import appodeal
+
+Class myClass Extends App
+	Field cnvs:Canvas
+	
+	Field ad:Appodeal
+	
+	Method OnCreate:Int()
+		SetUpdateRate(60)				
+		cnvs = New Canvas
+		
+		' my test key. Change this
+		Local APPKEY:String="b3b684d2e77c12114fae4095a345ac0f3aa4dcc3fccb58f0"
+		
+		ad = New Appodeal()
+		ad.Initialise(APPKEY,Appodeal.INTERSTITIAL | Appodeal.BANNERTOP)
+		Return 0
+	End
+
+	Method OnUpdate:Int()
+		If MouseHit(MOUSE_LEFT)
+			If MouseY()<DeviceHeight()/2
+				If ad.IsLoaded(Appodeal.BANNERTOP)
+					ad.Show(Appodeal.BANNERTOP)
+				End
+			Else
+				If ad.IsLoaded(Appodeal.INTERSTITIAL)
+					ad.Show(Appodeal.INTERSTITIAL)
+				End
+			End
+		End
+		Return 0
+	End
+	
+	Method OnRender:Int()
+		cnvs.Clear (0,0.5,0)
+		cnvs.DrawRect 0,0,DeviceWidth(),DeviceHeight()/2	
+		cnvs.Flush
+
+		Return 0
+	End
+End
+
+Function Main:Int()
+	New myClass		
+	Return 0
+End
