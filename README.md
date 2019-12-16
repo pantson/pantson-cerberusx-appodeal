@@ -21,7 +21,7 @@ To use Appodeal in your game:
 ### Compatibility
 Tested with CerburusX version V2019-10-13 and Appodeal 2.6.0
 
-You minimum API level will be raised to API 21. This is to fix the multidexing issues.
+Ypur apps minimum API level will be raised to API 21. This is to fix the multidexing issues.
 
 ### Manual ammedments to files
 
@@ -30,6 +30,7 @@ Compile your application and then ammend these files. This only has to be done o
 #### file: build.folder\android\gradletemplate\build.gradle
 
 change dependencies block to:
+
     dependencies {
         classpath 'com.android.tools.build:gradle:3.5.2'
     }
@@ -185,7 +186,7 @@ Disable GDPR consent. By default GDPR consent is disabled.
 #### Method EnableCOPPA:Void()
 
 If the user has Child settings in the OS, this will enable child friendly advertising in Appodeal.
-This is the defauly option.
+This is the default option.
 
 #### Method DisableCOPPA:Void()
 
