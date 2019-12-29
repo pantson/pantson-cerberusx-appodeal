@@ -163,11 +163,13 @@ create this file. contents:
 
 Initialises the Appodeal plugin. Use the app key from the dashboard.
 
-If compiled in debg mode, only test adverts will appear.
+If compiled in debug mode, only test adverts will appear.
 
-Adtypes is a combination of the type of adverts you want it your app, for example Appodeal.BANNERTOP | Appodeal.INTERSTITIAL
+Adtypes is a combination of the type of adverts you want it your app, for example 
 
-By default GDPR consent is set to false so user detials arent tracked.
+    Appodeal.BANNERTOP | Appodeal.INTERSTITIAL
+
+A consent form will pop up asking for GDPR permissions in the EU.
 
 #### Method IsLoaded:Bool(AdType:Int)
 
@@ -183,11 +185,11 @@ Hide an advert of AdType
 
 #### Method EnableGDPRConsent:Void()
 
-If you have permission from the user, you can Enable GDPR consent. By default GDPR consent is disabled. 
+If you have permission from the user, you can Enable GDPR consent. 
 
 #### Method DisableGDPRConsent:Void()
 
-Disable GDPR consent. By default GDPR consent is disabled. 
+Disable GDPR consent. 
 
 #### Method EnableCOPPA:Void()
 
