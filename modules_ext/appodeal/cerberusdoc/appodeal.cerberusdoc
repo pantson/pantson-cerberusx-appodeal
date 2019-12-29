@@ -182,6 +182,10 @@ Check to see if an advert has loaded and ready for display. AdType is a single a
 
 Show an advert of AdType
 
+# Method Hide:Void(AdType:Int)
+
+Hide an advert of AdType
+
 # Method EnableGDPRConsent:Void()
 
 If you have permission from the user, you can Enable GDPR consent. By default GDPR consent is disabled. 

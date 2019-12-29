@@ -1,42 +1,43 @@
 Strict
 
-#ANDROID_MIN_SDK_VERSION = 21
-
 #If TARGET<>"android"
-#Error "The Appodeal module is only available on the android target"
+#Error "The Appodeal module is only available on the Android target"
 #End
 
 #If TARGET="android"
-
 	Import "native/appodeal.android.java"
 
-	#ANDROID_LIBRARY_REFERENCE_1=" "
-	#ANDROID_LIBRARY_REFERENCE_2="compile 'com.appodeal.ads:sdk:2.6.0.0'~n"
+	#If ANDROID_MIN_SDK_VERSION < 21
+		#ANDROID_MIN_SDK_VERSION = 21
+	#End
+
+	#SRCS+=";${CD}/native/app/src/main/res/xml/network_security_config.xml;"
+	#ANDROID_APPLICATION_EXTRAS+="android:networkSecurityConfig=~q@xml/network_security_config~q~n"
+	#ANDROID_GRADLE_VERSION="3.5.2"
+	#ANDROID_GRADLE_DISTRIBUTION="gradle-4.6-all.zip"
+	#ANDROID_REPOSITORIES+="maven{url ~qhttps://artifactory.appodeal.com/appodeal~q}~n"
+	#ANDROID_LIBRARY_REFERENCE_2+="implementation 'com.appodeal.ads:sdk:2.6.0.0'~nimplementation 'com.explorestack:consent:1.0.0'~n"
 
 	#ANDROID_MANIFEST_MAIN+="
-		<uses-permission android:name=~qandroid.permission.ACCESS_NETWORK_STATE~q />
-		<uses-permission android:name=~qandroid.permission.INTERNET~q />
-		<uses-permission android:name=~qandroid.permission.ACCESS_COARSE_LOCATION~q />
-		<uses-permission android:name=~qandroid.permission.ACCESS_FINE_LOCATION~q />
-		<uses-permission android:name=~qandroid.permission.WRITE_EXTERNAL_STORAGE~q />
-		<uses-permission android:name=~qandroid.permission.ACCESS_WIFI_STATE~q />
-		<uses-permission android:name=~qandroid.permission.VIBRATE~q />
-		<uses-permission android:name=~qandroid.permission.REQUEST_INSTALL_PACKAGES~q/>"
+<uses-permission android:name=~qandroid.permission.ACCESS_NETWORK_STATE~q />
+<uses-permission android:name=~qandroid.permission.INTERNET~q />
+<uses-permission android:name=~qandroid.permission.ACCESS_COARSE_LOCATION~q />
+<uses-permission android:name=~qandroid.permission.ACCESS_FINE_LOCATION~q />
+<uses-permission android:name=~qandroid.permission.WRITE_EXTERNAL_STORAGE~q />
+<uses-permission android:name=~qandroid.permission.ACCESS_WIFI_STATE~q />"
     
-	#ANDROID_MANIFEST_APPLICATION="<uses-library
-    android:name=~qorg.apache.http.legacy~q
-    android:required=~qfalse~q />"
+	#ANDROID_MANIFEST_APPLICATION+="<uses-library
+ android:name=~qorg.apache.http.legacy~q
+ android:required=~qfalse~q />"
 
 #End 
 
 Extern
 
 Class _appodeal Extends Null="BBAppodeal"
-
-	Function GetAppodeal:AdAppodeal()
-		
 	Method initialise:Void(appKey:String,adType:Int)
 	Method show:Void(adType:Int)
+	Method hide:Void(adType:Int)
 	Method isLoaded:Bool(adType:Int)
 	Method enableLogging:Void()
 	Method disableLogging:Void()
@@ -83,6 +84,10 @@ Class Appodeal
 		_ad.show(AdType)
 	End
 	
+	Method Hide:Void(AdType:Int)
+		_ad.hide(AdType)
+	End
+
 	Method EnableGDPRConsent:Void()
 		_ad.updateGDPRconsent(True)
 	End

@@ -21,9 +21,11 @@ To use Appodeal in your game:
 ### Compatibility
 Tested with CerburusX version V2019-10-13 and Appodeal 2.6.0
 
-Ypur apps minimum API level will be raised to API 21. This is to fix the multidexing issues.
+Your apps minimum API level will be raised to API 21. This is to fix the multidexing issues.
 
-### Manual ammedments to files
+### Manual ammedments to files for CX version before V2020-01-01
+
+These changes are only required if running on an older version
 
 Compile your application and then ammend these files. This only has to be done once (unless you remove your build folder)
 
@@ -174,6 +176,10 @@ Check to see if an advert has loaded and ready for display. AdType is a single a
 #### Method Show:Void(AdType:Int)
 
 Show an advert of AdType
+
+#### Method Hide:Void(AdType:Int)
+
+Hide an advert of AdType
 
 #### Method EnableGDPRConsent:Void()
 
