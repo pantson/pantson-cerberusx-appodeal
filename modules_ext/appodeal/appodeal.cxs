@@ -14,7 +14,7 @@ Strict
 	#SRCS+=";${CD}/native/app/src/main/res/xml/network_security_config.xml;"
 	#ANDROID_APPLICATION_EXTRAS+="android:networkSecurityConfig=~q@xml/network_security_config~q~n"
 	#ANDROID_GRADLE_VERSION="3.5.2"
-	#ANDROID_GRADLE_DISTRIBUTION="gradle-4.6-all.zip"
+	#ANDROID_GRADLE_DISTRIBUTION="gradle-5.4.1-all.zip"
 	#ANDROID_REPOSITORIES+="maven{url ~qhttps://artifactory.appodeal.com/appodeal~q}~n"
 	#ANDROID_LIBRARY_REFERENCE_2+="implementation 'com.appodeal.ads:sdk:2.6.0.0'~nimplementation 'com.explorestack:consent:1.0.0'~n"
 
