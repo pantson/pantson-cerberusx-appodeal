@@ -37,7 +37,18 @@ Class myClass Extends App
 	
 	Method OnRender:Int()
 		cnvs.Clear (0,0.5,0)
+		If ad.IsLoaded(Appodeal.INTERSTITIAL)
+			cnvs.SetColor 1,1,1
+			cnvs.DrawText "INTERSTIAL LOADED",DeviceWidth()/2,DeviceHeight()/2+20,0.5,0.5
+		End
+
+		cnvs.SetColor 1,1,1
 		cnvs.DrawRect 0,0,DeviceWidth(),DeviceHeight()/2	
+		If ad.IsLoaded(Appodeal.BANNERTOP)
+			cnvs.SetColor 0,0.5,0
+			cnvs.DrawText "BANNER LOADED",DeviceWidth()/2,DeviceHeight()/2-20,0.5,0.5
+		End
+
 		cnvs.Flush
 
 		Return 0
