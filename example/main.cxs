@@ -1,5 +1,10 @@
 Strict
 
+'Uncomment the following lines to enable more permissions for appodeal.
+'Users may not like lots of permissions. Basic permissions are enabled by default.
+'#APPODEAL_LOCATION_PERMISSIONS="true"
+'#APPODEAL_FULL_PERMISSIONS="true"
+
 Import mojo2
 Import appodeal
 

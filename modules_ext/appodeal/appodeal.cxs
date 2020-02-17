@@ -11,24 +11,34 @@ Strict
 		#ANDROID_MIN_SDK_VERSION = 21
 	#End
 
-	#SRCS+=";${CD}/native/app/src/main/res/xml/network_security_config.xml;"
-	#ANDROID_APPLICATION_EXTRAS+="android:networkSecurityConfig=~q@xml/network_security_config~q~n"
+	#SRCS+=";${CD}/app/src/main/res/xml/network_security_config.xml;"
+
 	#ANDROID_GRADLE_VERSION="3.5.2"
 	#ANDROID_GRADLE_DISTRIBUTION="gradle-5.4.1-all.zip"
+	#ANDROID_APPLICATION_EXTRAS+="android:networkSecurityConfig=~q@xml/network_security_config~q~n"
 	#ANDROID_REPOSITORIES+="maven{url ~qhttps://artifactory.appodeal.com/appodeal~q}~n"
-	#ANDROID_LIBRARY_REFERENCE_2+="implementation 'com.appodeal.ads:sdk:2.6.0.0'~nimplementation 'com.explorestack:consent:1.0.0'~n"
+	#ANDROID_LIBRARY_REFERENCE_2+="implementation 'com.appodeal.ads:sdk:2.6.1.+'~nimplementation 'com.explorestack:consent:1.0.0'~n"
 
 	#ANDROID_MANIFEST_MAIN+="
-<uses-permission android:name=~qandroid.permission.ACCESS_NETWORK_STATE~q />
-<uses-permission android:name=~qandroid.permission.INTERNET~q />
-<uses-permission android:name=~qandroid.permission.ACCESS_COARSE_LOCATION~q />
-<uses-permission android:name=~qandroid.permission.ACCESS_FINE_LOCATION~q />
-<uses-permission android:name=~qandroid.permission.WRITE_EXTERNAL_STORAGE~q />
-<uses-permission android:name=~qandroid.permission.ACCESS_WIFI_STATE~q />"
+	<uses-permission android:name=~qandroid.permission.ACCESS_NETWORK_STATE~q />
+	<uses-permission android:name=~qandroid.permission.INTERNET~q />"
+#If APPODEAL_LOCATION_PERMISSIONS
+	#ANDROID_MANIFEST_MAIN+="	<uses-permission android:name=~qandroid.permission.ACCESS_COARSE_LOCATION~q />
+	<uses-permission android:name=~qandroid.permission.ACCESS_FINE_LOCATION~q />
+	<uses-permission android:name=~qandroid.permission.WRITE_EXTERNAL_STORAGE~q />"
+#End
+#If APPODEAL_FULL_PERMISSIONS
+	#ANDROID_MANIFEST_MAIN+="	<uses-permission android:name=~qandroid.permission.ACCESS_COARSE_LOCATION~q />
+	<uses-permission android:name=~qandroid.permission.ACCESS_FINE_LOCATION~q />
+	<uses-permission android:name=~qandroid.permission.WRITE_EXTERNAL_STORAGE~q />
+	<uses-permission android:name=~qandroid.permission.ACCESS_WIFI_STATE~q /><!--optional-->
+	<uses-permission android:name=~qandroid.permission.VIBRATE~q /><!--optional-->
+	<uses-permission android:name=~qandroid.permission.REQUEST_INSTALL_PACKAGES~q/> <!--optional-->"
+#End
     
 	#ANDROID_MANIFEST_APPLICATION+="<uses-library
- android:name=~qorg.apache.http.legacy~q
- android:required=~qfalse~q />"
+    android:name=~qorg.apache.http.legacy~q
+    android:required=~qfalse~q />"
 
 #End 
 
@@ -39,6 +49,7 @@ Class _appodeal Extends Null="BBAppodeal"
 	Method show:Void(adType:Int)
 	Method hide:Void(adType:Int)
 	Method isLoaded:Bool(adType:Int)
+	Method getGDPRconsent:Bool()
 	Method enableLogging:Void()
 	Method disableLogging:Void()
 	Method enableVerboseLogging:Void()
@@ -86,6 +97,10 @@ Class Appodeal
 	
 	Method Hide:Void(AdType:Int)
 		_ad.hide(AdType)
+	End
+
+	Method GetGDPRConsent:Bool()
+		Return _ad.getGDPRconsent()
 	End
 
 	Method EnableGDPRConsent:Void()

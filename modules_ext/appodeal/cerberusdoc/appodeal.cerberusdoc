@@ -1,16 +1,22 @@
 
 # Module appodeal
 
-The Appodeal module provides simple support for the Appodeal ad service allowing you to display advers.
+The Appodeal module provides simple support for the Appodeal ad service allowing you to display adverts.
 
 (Note: AppodealCX plugin is only currently available on the android target)
 
+V1.1.0 17-02-2020
+
+Added Hide for banner ads
+Added EU Consent prompts
+
 V1.0.0 14-12-2019
+
 Inital release
 
 # Class appodeal.Appodeal
 
-The Appodeal module provides simple support for the Appodeal ad service allowing you to display advers.
+The Appodeal module provides simple support for the Appodeal ad service allowing you to display adverts.
 
 To use Appodeal in your game:
 
@@ -20,8 +26,43 @@ To use Appodeal in your game:
 
 + Compile once. This will fail. Then change files listed below.
 
++ Include APPODEAL_LOCATION_PERMISSIONS or APPODEAL_FULL_PERMISSIONS to increase permissions. Basic permissions are default.
+
+<pre>
+#APPODEAL_LOCATION_PERMISSIONS="true"
+#APPODEAL_FULL_PERMISSIONS="true"
+</pre>
+
+>> Permissions
+
+>>> Basic Permissions
+
++ android.permission.ACCESS_NETWORK_STATE
+
++ android.permission.INTERNET
+
+>>> #APPODEAL_LOCATION_PERMISSIONS
+
+LOCATION permissions include all Basic permissions plus the following: 
+
++ android.permission.ACCESS_COARSE_LOCATION
+
++ android.permission.ACCESS_FINE_LOCATION
+
++ android.permission.WRITE_EXTERNAL_STORAGE
+
+>>> #APPODEAL_FULL_PERMISSIONS
+
+FULL permissions include all Location permissions plus the following: 
+
++ android.permission.ACCESS_WIFI_STATE
+
++ android.permission.VIBRATE
+
++ android.permission.REQUEST_INSTALL_PACKAGES
+
 >> Compatibility
-Tested with CerburusX version V2019-10-13 and Appodeal 2.6.0
+Tested with CerburusX version V2019-10-13 and Appodeal 2.6.1
 
 You minimum API level will be raised to API 21. This is to fix the multidexing issues.
 
@@ -186,18 +227,22 @@ Show an advert of AdType
 
 Hide an advert of AdType
 
+# Method GetGDPRConsent:Bool()
+
+Returns if the user has enabled GDPR consent when app first initialised
+
 # Method EnableGDPRConsent:Void()
 
-If you have permission from the user, you can Enable GDPR consent. By default GDPR consent is disabled. 
+If you have permission from the user, you can Enable GDPR consent. 
 
 # Method DisableGDPRConsent:Void()
 
-Disable GDPR consent. By default GDPR consent is disabled. 
+Disable GDPR consent. 
 
 # Method EnableCOPPA:Void()
 
 If the user has Child settings in the OS, this will enable child friendly advertising in Appodeal.
-This is the defauly option.
+This is the default option.
 
 # Method DisableCOPPA:Void()
 
@@ -205,5 +250,5 @@ If the user has Child settings in the OS, this will disable child friendly adver
 
 # Method IgnoreCOPPA:Void()
 
-This will ignore and child friendly settings in Appodeal.
+This will ignore any child friendly settings in Appodeal.
 
