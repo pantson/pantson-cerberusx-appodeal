@@ -1,6 +1,7 @@
 import android.util.Log;
 
 import com.appodeal.ads.Appodeal;
+
 //import com.appodeal.ads.utils.Log;
 
 import com.explorestack.consent.Consent;
@@ -27,6 +28,8 @@ class BBAppodeal {
 	public void initialise(String APP_KEY, int adType){
 		adTypes = adType;
 		appKey = APP_KEY;
+		
+		enablePermissions();
 		/*
 		Requesting Consent from European Users
 		*/
@@ -107,7 +110,7 @@ class BBAppodeal {
 	public boolean getGDPRconsent() {
 		return _adconsent;
 	}
-		public boolean isLoaded(int adType){
+	public boolean isLoaded(int adType){
 		return Appodeal.isLoaded(adType);
 	}
 	
@@ -134,4 +137,7 @@ class BBAppodeal {
 	public void ignoreCOPPA() {
 		Appodeal.setChildDirectedTreatment(null);
 	}
+	
+	private void enablePermissions() {
+}
 }

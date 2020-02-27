@@ -5,14 +5,19 @@ The Appodeal module provides simple support for the Appodeal ad service allowing
 
 (Note: AppodealCX plugin is only currently available on the android target)
 
+V1.2.0 27-02-2020
+
++ Updated to Appodeal 2.6.2
++ Added #ADMOB_APP_ID
+
 V1.1.0 17-02-2020
 
-Added Hide for banner ads
-Added EU Consent prompts
++ Added Hide for banner ads
++ Added EU Consent prompts
 
 V1.0.0 14-12-2019
 
-Inital release
++ Inital release
 
 # Class appodeal.Appodeal
 
@@ -62,7 +67,7 @@ FULL permissions include all Location permissions plus the following:
 + android.permission.REQUEST_INSTALL_PACKAGES
 
 >> Compatibility
-Tested with CerburusX version V2019-10-13 and Appodeal 2.6.1
+Tested with CerburusX version V2019-10-13 and Appodeal 2.6.2
 
 You minimum API level will be raised to API 21. This is to fix the multidexing issues.
 
@@ -155,6 +160,8 @@ Example:
 <pre>
 Strict
 
+#ADMOB_APP_ID="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+
 Import mojo2
 Import appodeal
 
@@ -209,7 +216,7 @@ End
 
 Initialises the Appodeal plugin. Use the app key from the dashboard.
 
-If compiled in debg mode, only test adverts will appear.
+If compiled in debug mode, only test adverts will appear.
 
 Adtypes is a combination of the type of adverts you want it your app, for example Appodeal.BANNERTOP | Appodeal.INTERSTITIAL
 

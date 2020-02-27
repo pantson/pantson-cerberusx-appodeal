@@ -5,6 +5,9 @@ Strict
 '#APPODEAL_LOCATION_PERMISSIONS="true"
 '#APPODEAL_FULL_PERMISSIONS="true"
 
+' get this from Admob dashboard
+#ADMOB_APP_ID="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+
 Import mojo2
 Import appodeal
 
