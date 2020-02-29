@@ -33,20 +33,20 @@ To use Appodeal in your game:
 
 + Include APPODEAL_LOCATION_PERMISSIONS or APPODEAL_FULL_PERMISSIONS to increase permissions. Basic permissions are default.
 
-<pre>
+```
 #APPODEAL_LOCATION_PERMISSIONS="true"
 #APPODEAL_FULL_PERMISSIONS="true"
-</pre>
+```
 
->> Permissions
+## Permissions
 
->>> Basic Permissions
+### Basic Permissions
 
 + android.permission.ACCESS_NETWORK_STATE
 
 + android.permission.INTERNET
 
->>> #APPODEAL_LOCATION_PERMISSIONS
+### #APPODEAL_LOCATION_PERMISSIONS
 
 LOCATION permissions include all Basic permissions plus the following: 
 
@@ -56,7 +56,7 @@ LOCATION permissions include all Basic permissions plus the following:
 
 + android.permission.WRITE_EXTERNAL_STORAGE
 
->>> #APPODEAL_FULL_PERMISSIONS
+### #APPODEAL_FULL_PERMISSIONS
 
 FULL permissions include all Location permissions plus the following: 
 
@@ -64,18 +64,16 @@ FULL permissions include all Location permissions plus the following:
 
 + android.permission.VIBRATE
 
-+ android.permission.REQUEST_INSTALL_PACKAGES
-
->> Compatibility
+## Compatibility
 Tested with CerburusX version V2019-10-13 and Appodeal 2.6.2
 
 You minimum API level will be raised to API 21. This is to fix the multidexing issues.
 
->> Manual ammedments to files
+## Manual ammedments to files
 
 Compile your application and then ammend these files. This only has to be done once (unless you remove your build folder)
 
->>> file: build.folder\android\gradletemplate\build.gradle
+### file: build.folder\android\gradletemplate\build.gradle
 
 change dependencies block to:
 ```
@@ -91,14 +89,14 @@ change maven block to:
         }
 ```
 
->>> file: build.folder\android\gradletemplate\gradle\wrapper\gradle-wrapper.properties
+### file: build.folder\android\gradletemplate\gradle\wrapper\gradle-wrapper.properties
 
 change distributionUrl line:
 ```
 distributionUrl=https\://services.gradle.org/distributions/gradle-5.4.1-all.zip
 ```
 
->>> file: build.folder\android\gradletemplate\app\build.gradle
+### file: build.folder\android\gradletemplate\app\build.gradle
 
 change:
 ```
@@ -118,7 +116,7 @@ android {
     }
 ```
 
->>> file: android\gradletemplate\app\src\main\AndroidManifest.xml
+### file: android\gradletemplate\app\src\main\AndroidManifest.xml
 
 change:
 ```
@@ -138,7 +136,7 @@ to:
     android:networkSecurityConfig="@xml/network_security_config">
 ```
 
->>> file: build.folder\android\app\src\main\res\xml\network_security_config.xml
+### file: build.folder\android\app\src\main\res\xml\network_security_config.xml
 
 create this file. contents:
 ```
