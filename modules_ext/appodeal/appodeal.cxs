@@ -37,7 +37,8 @@ Strict
 	<uses-permission android:name=~qandroid.permission.WRITE_EXTERNAL_STORAGE~q />
 	<uses-permission android:name=~qandroid.permission.ACCESS_WIFI_STATE~q /><!--optional-->
 	<uses-permission android:name=~qandroid.permission.VIBRATE~q /><!--optional-->
-	<uses-permission android:name=~qandroid.permission.REQUEST_INSTALL_PACKAGES~q/> <!--optional-->"
+' removed in 2.6.2
+'	<uses-permission android:name=~qandroid.permission.REQUEST_INSTALL_PACKAGES~q/> <!--optional-->"
 #End
     
 	#ANDROID_MANIFEST_APPLICATION+="<uses-library android:name=~qorg.apache.http.legacy~q android:required=~qfalse~q />~n"
