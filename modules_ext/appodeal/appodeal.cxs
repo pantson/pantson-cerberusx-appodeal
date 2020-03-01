@@ -21,7 +21,16 @@ Strict
 	#ANDROID_GRADLE_DISTRIBUTION="gradle-5.4.1-all.zip"
 	#ANDROID_APPLICATION_EXTRAS+="android:networkSecurityConfig=~q@xml/network_security_config~q~n"
 	#ANDROID_REPOSITORIES+="maven{url ~qhttps://artifactory.appodeal.com/appodeal~q}~n"
-	#ANDROID_LIBRARY_REFERENCE_2+="implementation 'com.appodeal.ads:sdk:2.6.2.+'~nimplementation 'com.explorestack:consent:1.0.0'~n"
+	#If APPODEAL_AMAZON
+		#ANDROID_LIBRARY_REFERENCE_2+="implementation ('com.appodeal.ads:sdk:2.6.2.+') {
+		exclude group: 'com.appodeal.ads.sdk.networks', module: 'ogury'
+		exclude group: 'com.appodeal.ads.sdk.networks', module: 'yandex'
+		}
+	implementation 'com.explorestack:consent:1.0.0'~n"
+	#Else
+	#ANDROID_LIBRARY_REFERENCE_2+="implementation 'com.appodeal.ads:sdk:2.6.2.+'
+	implementation 'com.explorestack:consent:1.0.0'~n"
+	#End
 
 	#ANDROID_MANIFEST_MAIN+="
 	<uses-permission android:name=~qandroid.permission.ACCESS_NETWORK_STATE~q />

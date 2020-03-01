@@ -5,6 +5,18 @@ The Appodeal module provides simple support for the Appodeal ad service allowing
 
 (Note: AppodealCX plugin is only currently available on the android target)
 
+Latest version
+
++ Added APPODEAL_AMAZON
+
+V1.2.2 29-02-2020
+
++ Updated docs
+
+V1.2.1 29-02-2020
+
++ Removed permission: android.permission.REQUEST_INSTALL_PACKAGES
+
 V1.2.0 27-02-2020
 
 + Updated to Appodeal 2.6.2
@@ -63,6 +75,10 @@ FULL permissions include all Location permissions plus the following:
 + android.permission.ACCESS_WIFI_STATE
 
 + android.permission.VIBRATE
+
+## AMAZON App Store
+
+If compiling for the amazon app store, assign #APPODEAL_AMAZON="yes". This will remove some of the ad providors from Appodeal plugin required by the Amazon App Store. If compiling for the Google Play store, remove that line. Any assignment to APPODEAL_AMAZON will remove these providors.
 
 ## Compatibility
 Tested with CerburusX version V2019-10-13 and Appodeal 2.6.2
