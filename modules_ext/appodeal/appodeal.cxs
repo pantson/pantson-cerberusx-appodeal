@@ -14,42 +14,45 @@ Strict
 	#If Not ADMOB_APP_ID
 		#Error("ADMOB_APP_ID not defined. Get this from the Admob dashboard")
 	#End
-
+	
 	#SRCS+=";${CD}/app/src/main/res/xml/network_security_config.xml;"
+
+	#If APPODEAL_AMAZON
+		#ANDROID_LIBRARY_REFERENCE_2+="implementation ('com.appodeal.ads:sdk:2.7.1.+') {
+		exclude group: 'com.appodeal.ads.sdk.networks', module: 'ogury'
+		exclude group: 'com.appodeal.ads.sdk.networks', module: 'yandex'
+		exclude group: 'com.appodeal.ads.sdk.networks', module: 'ironsource'
+		}
+	implementation 'com.explorestack:consent:1.0.1'~n"
+	#Else
+		#ANDROID_LIBRARY_REFERENCE_2+="implementation ('com.appodeal.ads:sdk:2.7.1.+') {
+		exclude group: 'com.appodeal.ads.sdk.networks', module: 'ironsource'
+		}
+	implementation 'com.explorestack:consent:1.0.1'~n"
+	#End
 
 	#ANDROID_GRADLE_VERSION="3.5.2"
 	#ANDROID_GRADLE_DISTRIBUTION="gradle-5.4.1-all.zip"
 	#ANDROID_APPLICATION_EXTRAS+="android:networkSecurityConfig=~q@xml/network_security_config~q~n"
 	#ANDROID_REPOSITORIES+="maven{url ~qhttps://artifactory.appodeal.com/appodeal~q}~n"
-	#If APPODEAL_AMAZON
-		#ANDROID_LIBRARY_REFERENCE_2+="implementation ('com.appodeal.ads:sdk:2.6.2.+') {
-		exclude group: 'com.appodeal.ads.sdk.networks', module: 'ogury'
-		exclude group: 'com.appodeal.ads.sdk.networks', module: 'yandex'
-		}
-	implementation 'com.explorestack:consent:1.0.0'~n"
-	#Else
-	#ANDROID_LIBRARY_REFERENCE_2+="implementation 'com.appodeal.ads:sdk:2.6.2.+'
-	implementation 'com.explorestack:consent:1.0.0'~n"
-	#End
 
-	#ANDROID_MANIFEST_MAIN+="
-	<uses-permission android:name=~qandroid.permission.ACCESS_NETWORK_STATE~q />
+	#ANDROID_MANIFEST_MAIN+="<uses-permission android:name=~qandroid.permission.ACCESS_NETWORK_STATE~q />
 	<uses-permission android:name=~qandroid.permission.INTERNET~q />"
+    
 #If APPODEAL_LOCATION_PERMISSIONS
 	#ANDROID_MANIFEST_MAIN+="	<uses-permission android:name=~qandroid.permission.ACCESS_COARSE_LOCATION~q />
 	<uses-permission android:name=~qandroid.permission.ACCESS_FINE_LOCATION~q />
 	<uses-permission android:name=~qandroid.permission.WRITE_EXTERNAL_STORAGE~q />"
 #End
+
 #If APPODEAL_FULL_PERMISSIONS
 	#ANDROID_MANIFEST_MAIN+="	<uses-permission android:name=~qandroid.permission.ACCESS_COARSE_LOCATION~q />
 	<uses-permission android:name=~qandroid.permission.ACCESS_FINE_LOCATION~q />
 	<uses-permission android:name=~qandroid.permission.WRITE_EXTERNAL_STORAGE~q />
 	<uses-permission android:name=~qandroid.permission.ACCESS_WIFI_STATE~q /><!--optional-->
-	<uses-permission android:name=~qandroid.permission.VIBRATE~q /><!--optional-->
-' removed in 2.6.2
-'	<uses-permission android:name=~qandroid.permission.REQUEST_INSTALL_PACKAGES~q/> <!--optional-->"
+	<uses-permission android:name=~qandroid.permission.VIBRATE~q /><!--optional-->"
 #End
-    
+
 	#ANDROID_MANIFEST_APPLICATION+="<uses-library android:name=~qorg.apache.http.legacy~q android:required=~qfalse~q />~n"
 	#ANDROID_MANIFEST_APPLICATION+="<meta-data android:name=~qcom.google.android.gms.ads.APPLICATION_ID~q android:value=~q${ADMOB_APP_ID}~q />~n"
 #End 

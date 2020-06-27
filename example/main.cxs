@@ -1,12 +1,12 @@
 Strict
 
-'Uncomment the following lines to enable more permissions for appodeal.
-'Users may not like lots of permissions. Basic permissions are enabled by default.
+' Uncomment the following lines to enable more permissions for appodeal.
+' Users may not like lots of permissions. Basic permissions are enabled by default.
 '#APPODEAL_LOCATION_PERMISSIONS="true"
 '#APPODEAL_FULL_PERMISSIONS="true"
 
-' uncommet next line if building for Amazon App Store
-#APPODEAL_AMAZON="true"
+' uncomment next libe to compile for Amazon Appstore
+'#APPODEAL_AMAZON="true"
 
 ' get this from Admob dashboard
 #ADMOB_APP_ID="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"

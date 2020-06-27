@@ -5,12 +5,15 @@ The Appodeal module provides simple support for the Appodeal ad service allowing
 
 (Note: AppodealCX plugin is only currently available on the android target)
 
-Latest version
+V1.3 27-06-2020
 
-+ Added APPODEAL_AMAZON
++ Updated Appodeal lib to 2.7.1
++ Fixed Appodeal logging
++ Removed ironsource ads from Package due to clash in manifest file
 
 V1.2.2 29-02-2020
 
++ Added APPODEAL_AMAZON
 + Updated docs
 
 V1.2.1 29-02-2020
@@ -81,11 +84,15 @@ FULL permissions include all Location permissions plus the following:
 If compiling for the amazon app store, assign #APPODEAL_AMAZON="yes". This will remove some of the ad providors from Appodeal plugin required by the Amazon App Store. If compiling for the Google Play store, remove that line. Any assignment to APPODEAL_AMAZON will remove these providors.
 
 >> Compatibility
-Tested with CerburusX version V2019-10-13 and Appodeal 2.6.2
+Tested with CerburusX version V2020-04-19 and Appodeal 2.7.1
 
 You minimum API level will be raised to API 21. This is to fix the multidexing issues.
 
 >> Manual ammedments to files
+
+** From V2020-04-19, there are no manual ammendments required. **
+
+For CX versions below V2020-04-10, please follow the below guide:
 
 Compile your application and then ammend these files. This only has to be done once (unless you remove your build folder)
 
@@ -273,3 +280,14 @@ If the user has Child settings in the OS, this will disable child friendly adver
 
 This will ignore any child friendly settings in Appodeal.
 
+# Method enableLogging:Void()
+
+This will enable Appodeal logging. In Debug mode this is enabled by default.
+
+# Method disableLogging:Void()
+
+This will disable Appodeal logging.
+
+# Method enableVerboseLogging:Void()
+
+This will enable Appodeal logging in verbose mode.

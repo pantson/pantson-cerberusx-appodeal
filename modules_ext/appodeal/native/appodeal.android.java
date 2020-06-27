@@ -1,7 +1,10 @@
 import android.util.Log;
 
 import com.appodeal.ads.Appodeal;
-
+import com.appodeal.ads.Native;
+import com.appodeal.ads.NativeAd;
+import com.appodeal.ads.NativeAdView;
+import com.appodeal.ads.UserSettings;
 //import com.appodeal.ads.utils.Log;
 
 import com.explorestack.consent.Consent;
@@ -37,7 +40,7 @@ class BBAppodeal {
 		consentManager.requestConsentInfoUpdate(appKey, new ConsentInfoUpdateListener() {
 			@Override
 			public void onConsentInfoUpdated(Consent consent) {
-				Log.d("Appodeal[Consent]", "onConsentInfoUpdated");
+				android.util.Log.d("Appodeal[Consent]", "onConsentInfoUpdated");
 				if (consentManager.shouldShowConsentDialog() == Consent.ShouldShow.TRUE) {
 					loadConsentForm();
 				} else {
@@ -47,7 +50,7 @@ class BBAppodeal {
 
 			@Override
 			public void onFailedToUpdateConsentInfo(ConsentManagerException e) {
-				Log.d("Appodeal", "onFailedToUpdateConsentInfo - " + e.getReason() + " " + e.getCode());
+				android.util.Log.d("Appodeal", "onFailedToUpdateConsentInfo - " + e.getReason() + " " + e.getCode());
 			}
 		});
 		
@@ -58,25 +61,25 @@ class BBAppodeal {
 		.withListener(new ConsentFormListener() {
 			@Override
 			public void onConsentFormLoaded() {
-				Log.d("Appodeal[Consent]", "onConsentFormLoaded");
+				android.util.Log.d("Appodeal[Consent]", "onConsentFormLoaded");
 				consentForm.showAsActivity();
 				
 			}
 
 			@Override
 			public void onConsentFormError(ConsentManagerException e) {
-				Log.d("Appodeal[Consent]", "ConsentManagerException - "
+				android.util.Log.d("Appodeal[Consent]", "ConsentManagerException - "
 				+ e.getReason() + " " + e.getCode());
 			}
 
 			@Override
 			public void onConsentFormOpened() {
-				Log.d("Appodeal[Consent]", "onConsentFormOpened");
+				android.util.Log.d("Appodeal[Consent]", "onConsentFormOpened");
 			}
 
 			@Override
 			public void onConsentFormClosed(Consent consent) {
-				Log.d("Appodeal[Consent]", "onConsentFormClosed");
+				android.util.Log.d("Appodeal[Consent]", "onConsentFormClosed");
 				Start(consent.getStatus() == Consent.Status.PERSONALIZED);
 			}
 		}).build();
@@ -115,15 +118,15 @@ class BBAppodeal {
 	}
 	
 	public void enableLogging(){
-		//		Appodeal.setLogLevel(Log.LogLevel.debug);
+		Appodeal.setLogLevel(com.appodeal.ads.utils.Log.LogLevel.debug);
 	}
 	
 	public void disableLogging(){
-		//		Appodeal.setLogLevel(Log.LogLevel.none);
+		//		Appodeal.setLogLevel(android.util.Log.LogLevel.none);
 	}
 
 	public void enableVerboseLogging(){
-		//		Appodeal.setLogLevel(Log.LogLevel.verbose);
+		//		Appodeal.setLogLevel(android.util.Log.LogLevel.verbose);
 	}
 
 	public void setTesting(boolean state){
@@ -139,5 +142,5 @@ class BBAppodeal {
 	}
 	
 	private void enablePermissions() {
-}
+	}
 }
