@@ -2,29 +2,35 @@
 # Module appodeal
 The Appodeal module provides simple support for the Appodeal ad service allowing you to display adverts.
 (Note: AppodealCX plugin is only currently available on the android target)
+
 V1.3 27-06-2020
 + Updated Appodeal lib to 2.7.1
 + Fixed Appodeal logging
 + Removed ironsource ads from Package due to clash in manifest file
+
 V1.2.2 29-02-2020
 + Added APPODEAL_AMAZON
 + Updated docs
+
 V1.2.1 29-02-2020
 + Removed permission: android.permission.REQUEST_INSTALL_PACKAGES
+
 V1.2.0 27-02-2020
 + Updated to Appodeal 2.6.2
 + Added #ADMOB_APP_ID
+
 V1.1.0 17-02-2020
 + Added Hide for banner ads
 + Added EU Consent prompts
+
 V1.0.0 14-12-2019
 + Inital release
+
 # Class appodeal.Appodeal
 The Appodeal module provides simple support for the Appodeal ad service allowing you to display adverts.
 To use Appodeal in your game:
 + Get your APP_KEY from the Appodeal dashboard
 + Import the Appodeal module into your game
-+ Compile once. This will fail. Then change files listed below.
 + Include APPODEAL_LOCATION_PERMISSIONS or APPODEAL_FULL_PERMISSIONS to increase permissions. Basic permissions are default.
 ``` 
 #APPODEAL_LOCATION_PERMISSIONS="true" 
