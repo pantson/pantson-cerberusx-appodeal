@@ -1,4 +1,3 @@
-
 # Module appodeal
 
 The Appodeal module provides simple support for the Appodeal ad service allowing you to display adverts.
@@ -44,8 +43,6 @@ To use Appodeal in your game:
 
 + Import the Appodeal module into your game
 
-+ Compile once. This will fail. Then change files listed below.
-
 + Include APPODEAL_LOCATION_PERMISSIONS or APPODEAL_FULL_PERMISSIONS to increase permissions. Basic permissions are default.
 
 <pre>
@@ -84,15 +81,15 @@ FULL permissions include all Location permissions plus the following:
 If compiling for the amazon app store, assign #APPODEAL_AMAZON="yes". This will remove some of the ad providors from Appodeal plugin required by the Amazon App Store. If compiling for the Google Play store, remove that line. Any assignment to APPODEAL_AMAZON will remove these providors.
 
 >> Compatibility
-Tested with CerburusX version V2020-04-19 and Appodeal 2.7.1
+Tested with CerburusX version V2020-05-05 and Appodeal 2.7.1
 
 You minimum API level will be raised to API 21. This is to fix the multidexing issues.
 
 >> Manual ammedments to files
 
-** From V2020-04-19, there are no manual ammendments required. **
+** From V2020-05-05, there are no manual ammendments required. **
 
-For CX versions below V2020-04-10, please follow the below guide:
+For CX versions below V2020-05-05, please follow the below guide:
 
 Compile your application and then ammend these files. This only has to be done once (unless you remove your build folder)
 

@@ -2,29 +2,35 @@
 # Module appodeal
 The Appodeal module provides simple support for the Appodeal ad service allowing you to display adverts.
 (Note: AppodealCX plugin is only currently available on the android target)
+
 V1.3 27-06-2020
 + Updated Appodeal lib to 2.7.1
 + Fixed Appodeal logging
 + Removed ironsource ads from Package due to clash in manifest file
+
 V1.2.2 29-02-2020
 + Added APPODEAL_AMAZON
 + Updated docs
+
 V1.2.1 29-02-2020
 + Removed permission: android.permission.REQUEST_INSTALL_PACKAGES
+
 V1.2.0 27-02-2020
 + Updated to Appodeal 2.6.2
 + Added #ADMOB_APP_ID
+
 V1.1.0 17-02-2020
 + Added Hide for banner ads
 + Added EU Consent prompts
+
 V1.0.0 14-12-2019
 + Inital release
+
 # Class appodeal.Appodeal
 The Appodeal module provides simple support for the Appodeal ad service allowing you to display adverts.
 To use Appodeal in your game:
 + Get your APP_KEY from the Appodeal dashboard
 + Import the Appodeal module into your game
-+ Compile once. This will fail. Then change files listed below.
 + Include APPODEAL_LOCATION_PERMISSIONS or APPODEAL_FULL_PERMISSIONS to increase permissions. Basic permissions are default.
 ``` 
 #APPODEAL_LOCATION_PERMISSIONS="true" 
@@ -46,11 +52,11 @@ FULL permissions include all Location permissions plus the following:
 ## AMAZON App Store
 If compiling for the amazon app store, assign #APPODEAL_AMAZON="yes". This will remove some of the ad providors from Appodeal plugin required by the Amazon App Store. If compiling for the Google Play store, remove that line. Any assignment to APPODEAL_AMAZON will remove these providors.
 ## Compatibility
-Tested with CerburusX version V2020-04-19 and Appodeal 2.7.1
+Tested with CerburusX version V2020-05-05 and Appodeal 2.7.1
 You minimum API level will be raised to API 21. This is to fix the multidexing issues.
 ## Manual ammedments to files
-** From V2020-04-19, there are no manual ammendments required. **
-For CX versions below V2020-04-10, please follow the below guide:
+** From V2020-05-05, there are no manual ammendments required. **
+For CX versions below V2020-05-05, please follow the below guide:
 Compile your application and then ammend these files. This only has to be done once (unless you remove your build folder)
 ### file: build.folder\android\gradletemplate\build.gradle
 change dependencies block to:
