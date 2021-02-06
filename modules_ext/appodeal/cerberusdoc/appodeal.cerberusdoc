@@ -4,6 +4,12 @@ The Appodeal module provides simple support for the Appodeal ad service allowing
 
 (Note: AppodealCX plugin is only currently available on the android target)
 
+V1.4 04-04-2021
+
++ Updated Appodeal lib to 2.8.1
++ Added custom Appodeal ad providor exclusions
++ Removed manual integration from docs. See readme here for manual instructions: https://github.com/pantson/pantson-cerberusx-appodeal/blob/201d81be3876ad6fd7428ed121eec9690f643420/README.md
+
 V1.3 27-06-2020
 
 + Updated Appodeal lib to 2.7.1
@@ -85,94 +91,6 @@ Tested with CerburusX version V2020-05-05 and Appodeal 2.7.1
 
 You minimum API level will be raised to API 21. This is to fix the multidexing issues.
 
->> Manual ammedments to files
-
-** From V2020-05-05, there are no manual ammendments required. **
-
-For CX versions below V2020-05-05, please follow the below guide:
-
-Compile your application and then ammend these files. This only has to be done once (unless you remove your build folder)
-
->>> file: build.folder\android\gradletemplate\build.gradle
-
-change dependencies block to:
-<pre>
-    dependencies {
-        classpath 'com.android.tools.build:gradle:3.5.2'
-    }
-</pre>
-change maven block to:
-<pre>
-        maven {
-            url "https://maven.google.com"
-            url "https://artifactory.appodeal.com/appodeal"
-        }
-</pre>
-
->>> file: build.folder\android\gradletemplate\gradle\wrapper\gradle-wrapper.properties
-
-change distributionUrl line:
-<pre>
-distributionUrl=https\://services.gradle.org/distributions/gradle-5.4.1-all.zip
-</pre>
-
->>> file: build.folder\android\gradletemplate\app\build.gradle
-
-change:
-<pre>
-android {
-    compileSdkVersion ${ANDROID_TARGET_SDK_VERSION}
-    buildToolsVersion "${ANDROID_BUILD_TOOLS_VERSION}"
-</pre>
-to:
-<pre>
-android {
-    compileSdkVersion ${ANDROID_TARGET_SDK_VERSION}
-    buildToolsVersion "${ANDROID_BUILD_TOOLS_VERSION}"
-
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-</pre>
-
->>> file: android\gradletemplate\app\src\main\AndroidManifest.xml
-
-change:
-<pre>
-  <application
-    android:allowBackup="true"
-    android:icon="@mipmap/ic_launcher"
-    android:label="${ANDROID_APP_LABEL}"
-    android:roundIcon="@mipmap/ic_launcher_round">
-</pre>
-to:
-<pre>
-  <application
-    android:allowBackup="true"
-    android:icon="@mipmap/ic_launcher"
-    android:label="${ANDROID_APP_LABEL}"
-    android:roundIcon="@mipmap/ic_launcher_round"
-    android:networkSecurityConfig="@xml/network_security_config">
-</pre>
-
->>> file: build.folder\android\app\src\main\res\xml\network_security_config.xml
-
-create this file. contents:
-<pre>
-<?xml version="1.0" encoding="utf-8"?>
-<network-security-config>
-    <base-config cleartextTrafficPermitted="true">
-        <trust-anchors>
-            <certificates src="system" />
-            <certificates src="user" />
-        </trust-anchors>
-    </base-config>
-    <domain-config cleartextTrafficPermitted="true">
-        <domain includeSubdomains="true">127.0.0.1</domain>
-    </domain-config>
-</network-security-config>
-</pre>
 
 Example:
 <pre>
@@ -275,15 +193,17 @@ If the user has Child settings in the OS, this will disable child friendly adver
 
 # Method IgnoreCOPPA:Void()
 
-This will ignore any child friendly settings in Appodeal.
+This will ignore any child @friendly settings in Appodeal.
 
 # Method enableLogging:Void()
 
-This will enable Appodeal logging. In Debug mode this is enabled by default.
+This will enable @Appodeal logging. In Debug mode this is enabled by default.
 
-# Method disableLogging:Void()
+#Method disableLogging:Void()
 
 This will disable Appodeal logging.
+
+Links [[Initialise]]
 
 # Method enableVerboseLogging:Void()
 
