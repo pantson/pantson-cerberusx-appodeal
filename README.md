@@ -215,25 +215,35 @@ This is the default option.
 <a name="appodeal.Appodeal.DisableCOPPA"></a>
 ### Method DisableCOPPA:Void()
 
-If the user has Child settings in the OS, this will disable child friendly advertising in Appodeal.
+If the user has Child settings in the OS, this will disable child friendly advertising in Appodeal. Not recommended.
 
 <a name="appodeal.Appodeal.IgnoreCOPPA"></a>
 ### Method IgnoreCOPPA:Void()
 
-This will ignore any child **friendly** settings in Appodeal.
+This will ignore any child **friendly** settings in Appodeal. Not recommended.
 
-<a name="appodeal.Appodeal.enableLogging"></a>
-### Method enableLogging:Void()
+<a name="appodeal.Appodeal.EnableLogging"></a>
+### Method EnableLogging:Void()
 
 This will enable **Appodeal** logging. In Debug mode this is enabled by default.
 
-#Method disableLogging:Void()
+#Method DisableLogging:Void()
 
 This will disable Appodeal logging.
 
 Links [appodeal.Appodeal.Initialise](#appodeal.Appodeal.Initialise)
 
-<a name="appodeal.Appodeal.enableVerboseLogging"></a>
-### Method enableVerboseLogging:Void()
+<a name="appodeal.Appodeal.EnableVerboseLogging"></a>
+### Method EnableVerboseLogging:Void()
 
 This will enable Appodeal logging in verbose mode.
+
+<a name="appodeal.Appodeal.EnableTestAds"></a>
+### Method EnableTestAds:Void()
+
+Enable displaying of test adverts only. This is enable by default in DEBUG mode
+
+<a name="appodeal.Appodeal.DisableTestAds"></a>
+### Method DisableTestAds:Void()
+
+Disables test ads

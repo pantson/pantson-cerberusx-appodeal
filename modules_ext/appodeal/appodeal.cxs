@@ -160,4 +160,24 @@ Class Appodeal
 	Method DisableCOPPA:Void()
 		_ad.updateCOPPA(False)
 	End
+	
+	Method EnableTestAds:Void()
+		_ad.setTesting(True)
+	End
+
+	Method DisableTestAds:Void()
+		_ad.setTesting(False)
+	End
+	
+	Method DisableLogging:Void()
+		_ad.disableLogging()
+	End
+	
+	Method EnableLogging:Void()
+		_ad.enableLogging()
+	End
+	
+	Method EnableVerboseLogging:Void()
+		_ad.enableVerboseLogging()
+	End
 End

@@ -14,7 +14,7 @@ Strict
 '#APPODEAL_EXCLUDE_3=""
 
 ' get this from Admob dashboard or comment out if no admob providor required
-#ADMOB_APP_ID="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+'#ADMOB_APP_ID="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 
 Import mojo2
 Import appodeal
@@ -33,6 +33,10 @@ Class myClass Extends App
 		
 		ad = New Appodeal()
 		ad.Initialise(APPKEY,Appodeal.INTERSTITIAL | Appodeal.BANNERTOP)
+		
+		' enable test ads for this demo
+		ad.EnableTestAds()
+		
 		Return 0
 	End
 

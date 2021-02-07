@@ -206,22 +206,30 @@ This is the default option.
 
 # Method DisableCOPPA:Void()
 
-If the user has Child settings in the OS, this will disable child friendly advertising in Appodeal.
+If the user has Child settings in the OS, this will disable child friendly advertising in Appodeal. Not recommended.
 
 # Method IgnoreCOPPA:Void()
 
-This will ignore any child @friendly settings in Appodeal.
+This will ignore any child @friendly settings in Appodeal. Not recommended.
 
-# Method enableLogging:Void()
+# Method EnableLogging:Void()
 
 This will enable @Appodeal logging. In Debug mode this is enabled by default.
 
-#Method disableLogging:Void()
+#Method DisableLogging:Void()
 
 This will disable Appodeal logging.
 
 Links [[Initialise]]
 
-# Method enableVerboseLogging:Void()
+# Method EnableVerboseLogging:Void()
 
 This will enable Appodeal logging in verbose mode.
+
+# Method EnableTestAds:Void()
+
+Enable displaying of test adverts only. This is enable by default in DEBUG mode
+
+# Method DisableTestAds:Void()
+
+Disables test ads
