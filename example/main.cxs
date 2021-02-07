@@ -13,7 +13,7 @@ Strict
 '#APPODEAL_EXCLUDE_2=""
 '#APPODEAL_EXCLUDE_3=""
 
-' get this from Admob dashboard
+' get this from Admob dashboard or comment out if no admob providor required
 #ADMOB_APP_ID="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 
 Import mojo2

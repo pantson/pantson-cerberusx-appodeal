@@ -4,9 +4,6 @@ Strict
 ' Use at your own risk
 ' All code here on Github: https://github.com/pantson/pantson-cerberusx-appodeal
 
-'#ANDROID_TARGET_SDK_VERSION="29"
-'#ANDROID_BUILD_TOOLS_VERSION="29.0.2"
-
 #If TARGET<>"android"
 #Error "The Appodeal module is only available on the Android target"
 #End
@@ -17,6 +14,16 @@ Strict
 	#If ANDROID_MIN_SDK_VERSION < 28
 		#ANDROID_MIN_SDK_VERSION = 28
 	#End
+
+	#If ANDROID_TARGET_SDK_VERSION < 29
+		#ANDROID_TARGET_SDK_VERSION=29
+	#End
+	
+	#If ANDROID_BUILD_TOOLS_VERSION
+	#If ANDROID_BUILD_TOOLS_VERSION<29.0.2
+		#ANDROID_BUILD_TOOLS_VERSION=29.0.2
+	#End
+	#end
 
 	#SRCS+=";${CD}/app/src/main/res/xml/network_security_config.xml;"
 

@@ -8,7 +8,8 @@ V1.4 04-04-2021
 
 + Updated Appodeal lib to 2.8.1
 + Added custom Appodeal ad providor exclusions
-+ Removed manual integration from docs. See readme here for manual instructions: https://github.com/pantson/pantson-cerberusx-appodeal/blob/201d81be3876ad6fd7428ed121eec9690f643420/README.md
++ Removed old manual integration from docs. See readme here for manual instructions: https://github.com/pantson/pantson-cerberusx-appodeal/blob/201d81be3876ad6fd7428ed121eec9690f643420/README.md
++ *New manaul integration required for upgrade to AndroidX*
 
 V1.3 27-06-2020
 
@@ -87,10 +88,26 @@ FULL permissions include all Location permissions plus the following:
 If compiling for the amazon app store, assign #APPODEAL_AMAZON="yes". This will remove some of the ad providors from Appodeal plugin required by the Amazon App Store. If compiling for the Google Play store, remove that line. Any assignment to APPODEAL_AMAZON will remove these providors.
 
 >> Compatibility
-Tested with CerburusX version V2020-05-05 and Appodeal 2.7.1
+Tested with CerburusX version V2020-12-05 and Appodeal 2.8.1
 
-You minimum API level will be raised to API 21. This is to fix the multidexing issues.
+You minimum API level will be raised to API 28. This is to fix the multidexing issues.
 
+>> Manual integration
+
+On first compilation this will fail. Do not panic.
+
+Open up your build folder and navigate to android/gradletemplate
+
+Open up file gradle.properties
+
+The content of this file will just be a huge comment. Add the following to the end of the line
+
+<pre>
+android.useAndroidX=true
+android.enableJetifier=true
+</pre>
+
+Save this and compile again. Integration complete!
 
 Example:
 <pre>
