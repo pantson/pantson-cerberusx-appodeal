@@ -40,7 +40,7 @@ class BBAppodeal {
 		consentManager.requestConsentInfoUpdate(appKey, new ConsentInfoUpdateListener() {
 			@Override
 			public void onConsentInfoUpdated(Consent consent) {
-				android.util.Log.d("Appodeal[Consent]", "onConsentInfoUpdated");
+				Log.d("Appodeal[Consent]", "onConsentInfoUpdated");
 				if (consentManager.shouldShowConsentDialog() == Consent.ShouldShow.TRUE) {
 					loadConsentForm();
 				} else {
@@ -50,7 +50,7 @@ class BBAppodeal {
 
 			@Override
 			public void onFailedToUpdateConsentInfo(ConsentManagerException e) {
-				android.util.Log.d("Appodeal", "onFailedToUpdateConsentInfo - " + e.getReason() + " " + e.getCode());
+				Log.d("Appodeal", "onFailedToUpdateConsentInfo - " + e.getReason() + " " + e.getCode());
 			}
 		});
 		
@@ -61,25 +61,25 @@ class BBAppodeal {
 		.withListener(new ConsentFormListener() {
 			@Override
 			public void onConsentFormLoaded() {
-				android.util.Log.d("Appodeal[Consent]", "onConsentFormLoaded");
+				Log.d("Appodeal[Consent]", "onConsentFormLoaded");
 				consentForm.showAsActivity();
 				
 			}
 
 			@Override
 			public void onConsentFormError(ConsentManagerException e) {
-				android.util.Log.d("Appodeal[Consent]", "ConsentManagerException - "
+				Log.d("Appodeal[Consent]", "ConsentManagerException - "
 				+ e.getReason() + " " + e.getCode());
 			}
 
 			@Override
 			public void onConsentFormOpened() {
-				android.util.Log.d("Appodeal[Consent]", "onConsentFormOpened");
+				Log.d("Appodeal[Consent]", "onConsentFormOpened");
 			}
 
 			@Override
 			public void onConsentFormClosed(Consent consent) {
-				android.util.Log.d("Appodeal[Consent]", "onConsentFormClosed");
+				Log.d("Appodeal[Consent]", "onConsentFormClosed");
 				Start(consent.getStatus() == Consent.Status.PERSONALIZED);
 			}
 		}).build();
@@ -122,11 +122,11 @@ class BBAppodeal {
 	}
 	
 	public void disableLogging(){
-		//		Appodeal.setLogLevel(android.util.Log.LogLevel.none);
+		Appodeal.setLogLevel(com.appodeal.ads.utils.Log.LogLevel.none);
 	}
 
 	public void enableVerboseLogging(){
-		//		Appodeal.setLogLevel(android.util.Log.LogLevel.verbose);
+		Appodeal.setLogLevel(com.appodeal.ads.utils.Log.LogLevel.verbose);
 	}
 
 	public void setTesting(boolean state){
