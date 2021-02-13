@@ -27,33 +27,33 @@ Strict
 
 	#SRCS+=";${CD}/app/src/main/res/xml/network_security_config.xml;"
 
-	#ANDROID_LIBRARY_REFERENCE_2+="implementation ('com.appodeal.ads:sdk:2.8.1.+') {
+	#APPODEAL_LIBRARY_REFERENCE_2+="implementation ('com.appodeal.ads:sdk:2.8.1.+') {
       exclude group: 'com.appodeal.ads.sdk.networks', module: 'ironsource'~n"
 
 	#If APPODEAL_AMAZON
-		#ANDROID_LIBRARY_REFERENCE_2+="      exclude group: 'com.appodeal.ads.sdk.networks', module: 'ogury'"
-		#ANDROID_LIBRARY_REFERENCE_2+="      exclude group: 'com.appodeal.ads.sdk.networks', module: 'yandex'"
+		#APPODEAL_LIBRARY_REFERENCE_2+="      exclude group: 'com.appodeal.ads.sdk.networks', module: 'ogury'"
+		#APPODEAL_LIBRARY_REFERENCE_2+="      exclude group: 'com.appodeal.ads.sdk.networks', module: 'yandex'"
 	#End
 
 	#If Not ADMOB_APP_ID
 		#If CONFIG="debug"
 			#Print("#ADMOB_APP_ID not defined. Get this from the Admob dashboard. Omitting Admob module from Appodeal plugin")
 		#End
-		#ANDROID_LIBRARY_REFERENCE_2+="      exclude group: 'com.appodeal.ads.sdk.networks', module: 'admob'~n"
+		#APPODEAL_LIBRARY_REFERENCE_2+="      exclude group: 'com.appodeal.ads.sdk.networks', module: 'admob'~n"
 	#Else
 		#ANDROID_MANIFEST_APPLICATION+="<meta-data android:name=~qcom.google.android.gms.ads.APPLICATION_ID~q android:value=~q${ADMOB_APP_ID}~q />~n"
 	#End
 	#If APPODEAL_EXCLUDE_1
-		#ANDROID_LIBRARY_REFERENCE_2+="      exclude group: 'com.appodeal.ads.sdk.networks', module: '"+#APPODEAL_EXCLUDE_1+"'~n"
+		#APPODEAL_LIBRARY_REFERENCE_2+="      exclude group: 'com.appodeal.ads.sdk.networks', module: '"+#APPODEAL_EXCLUDE_1+"'~n"
 	#End
 	#If APPODEAL_EXCLUDE_2
-		#ANDROID_LIBRARY_REFERENCE_2+="      exclude group: 'com.appodeal.ads.sdk.networks', module: '"+#APPODEAL_EXCLUDE_2+"'~n"
+		#APPODEAL_LIBRARY_REFERENCE_2+="      exclude group: 'com.appodeal.ads.sdk.networks', module: '"+#APPODEAL_EXCLUDE_2+"'~n"
 	#End
 	#If APPODEAL_EXCLUDE_3
-		#ANDROID_LIBRARY_REFERENCE_2+="      exclude group: 'com.appodeal.ads.sdk.networks', module: '"+#APPODEAL_EXCLUDE_3+"'~n"
+		#APPODEAL_LIBRARY_REFERENCE_2+="      exclude group: 'com.appodeal.ads.sdk.networks', module: '"+#APPODEAL_EXCLUDE_3+"'~n"
 	#End
 
-	#ANDROID_LIBRARY_REFERENCE_2+="    }~n    implementation 'com.explorestack:consent:1.0.1'~n"
+	#APPODEAL_LIBRARY_REFERENCE_2+="    }~n    implementation 'com.explorestack:consent:1.0.1'~n"
 
 	#ANDROID_GRADLE_VERSION="3.5.4"
 	#ANDROID_GRADLE_DISTRIBUTION="gradle-6.1.1-all.zip"
@@ -78,6 +78,7 @@ Strict
 #End
 
 	#ANDROID_MANIFEST_APPLICATION+="<uses-library android:name=~qorg.apache.http.legacy~q android:required=~qfalse~q />~n"
+	#ANDROID_LIBRARY_REFERENCE_2 += APPODEAL_LIBRARY_REFERENCE_2
 #End 
 
 Extern
